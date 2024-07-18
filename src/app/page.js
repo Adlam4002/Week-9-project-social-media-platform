@@ -11,3 +11,6 @@ export default function Home() {
     </main>
   );
 }
+// need at least 2 tables  users tbale(containing clerkId) and posts table(connected to users byu the clerkId--> foreign key) one to many one user has many posts. if i do likes, i need a third table for likes. if followers fetch goal need a juntion table for followerid and followeeid --> many to many one user can follow many users who can also follow many users
+// when deploy add all env vars (clerk and database)
+// if use
