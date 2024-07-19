@@ -69,11 +69,10 @@ export default async function UserIdPage() {
     const posts = result.rows;
     console.log(` userData = ${userData.username}`);
     return (
-      <main>
-        <h1>Dynamic user page</h1>
+      <main id="mdiv">
         {/* id, clerk id, username, bio, location, age */}
         <h2>
-          Welcome: {userData?.firstName}
+          Welcome {userData?.firstName}
           <br /> Signed in as: {userData?.emailAddresses[0]?.emailAddress}
         </h2>
         {/* <div className="flex">
@@ -111,7 +110,7 @@ export default async function UserIdPage() {
           </form>
           <div id="current-info" className="flex flex-col"></div>
         </div> */}
-        <form className="flex flex-col items-center p-28" action={handlePost}>
+        <form id="postform" action={handlePost}>
           <div className="flex flex-col">
             <input
               name="user"
@@ -136,9 +135,9 @@ export default async function UserIdPage() {
         </form>
         <div>
           {posts.map((item) => (
-            <div key={item.id} id="post-div">
-              <h4>{item.username}</h4>
-              <p>{item.post}</p>
+            <div key={item.id} id="posts">
+              <h4 id="postname">{item.username}</h4>
+              <p id="postbody">{item.post}</p>
             </div>
           ))}
         </div>

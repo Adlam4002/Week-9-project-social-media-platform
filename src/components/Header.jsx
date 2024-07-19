@@ -42,6 +42,7 @@ export default function Header({ href, children }) {
       <nav>
         <ActiveLink href="/">Home</ActiveLink> |{" "}
         <ActiveLink href="/posts">Posts</ActiveLink> |{" "}
+        <ActiveLink href="/userlist">User List</ActiveLink> |{" "}
         <SignedIn>
           <UserButton />
         </SignedIn>

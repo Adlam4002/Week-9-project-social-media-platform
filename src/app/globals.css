@@ -12,3 +12,40 @@ body {
   color: rgb(232, 232, 232);
   background: rgb(41, 41, 41);
 }
+nav,
+#profilelink {
+  padding-left: 10%;
+}
+/* flex min-h-screen flex-col items-center p-24 */
+#mdiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 50px;
+  overflow-y: auto;
+}
+#posts {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: solid rgb(179, 179, 179);
+  width: 75vw;
+}
+#postname {
+  padding-left: 15px;
+}
+#postbody,
+#postbutton {
+  align-self: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#postform {
+  padding-left: 30vw;
+  padding-right: 30vw;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
