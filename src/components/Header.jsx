@@ -1,6 +1,9 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import getUserId from "@/components/UserAuth";
+// import { auth } from "@clerk/nextjs/server";
 import {
   UserButton,
   SignInButton,
@@ -8,6 +11,7 @@ import {
   SignedIn,
   SignedOut,
 } from "@clerk/nextjs";
+import ProfileLink from "./ProfileLink";
 // import { auth } from "@clerk/nextjs/server";
 export function ActiveLink({ href, children }) {
   const pathname = usePathname();
@@ -22,13 +26,22 @@ export function ActiveLink({ href, children }) {
 
 export default function Header({ href, children }) {
   // const { userId } = auth();
+  // const [userId, setUserId] = useState(null);
+  // useEffect(() => {
+  //   async function fetchUserId() {
+  //     const id = await getUserId();
+  //     setUserId(id);
+  //     console.log(id);
+  //   }
+  //   fetchUserId();
+  // }, []);
   const pathname = usePathname();
   const isActive = pathname === href;
   return (
     <>
       <nav>
         <ActiveLink href="/">Home</ActiveLink> |{" "}
-        <ActiveLink href="/user">About</ActiveLink>{" "}
+        <ActiveLink href="/posts">Posts</ActiveLink> |{" "}
         <SignedIn>
           <UserButton />
         </SignedIn>
