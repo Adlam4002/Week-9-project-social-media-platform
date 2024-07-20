@@ -9,7 +9,7 @@ export default function Home() {
       <Link id="profilelink" href={`/user/${userId}`}>
         My profile
       </Link>
-      <div id="mdiv" className="flex min-h-screen flex-col items-center p-24">
+      <div id="mdiv" className="flex min-h-screen flex-col items-center p-16">
         <SignedOut>
           <SignUpButton>Sign up?</SignUpButton>{" "}
           <SignInButton>Sign in</SignInButton>
@@ -22,7 +22,23 @@ export default function Home() {
             </Link>
           </h3>
         </SignedIn>
-        <h1>Test homepage</h1>
+        <h1>
+          Welcome to ConnectHub – your new favorite spot for connecting,
+          sharing, and discovering!
+          <br /> At ConnectHub, we believe in the power of community. Our
+          platform is designed to bring people together, foster meaningful
+          connections, and spark engaging conversations. Whether you&apos;re
+          here to catch up with friends, share your latest adventures, or
+          discover new interests, ConnectHub is the place to be.
+          <br /> Join a vibrant community where your voice matters. Share your
+          thoughts, post photos and videos, and explore a world of content
+          tailored just for you. Stay connected with those who matter most and
+          meet new friends along the way.
+          <br /> Ready to dive in? Create your profile, start sharing, and
+          experience the magic of ConnectHub. Let&apos;s connect, share, and
+          grow together! 🌟
+          <br /> ConnectHub – Your World, Connected.
+        </h1>
       </div>
     </main>
   );

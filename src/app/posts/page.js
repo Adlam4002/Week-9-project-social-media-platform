@@ -86,7 +86,7 @@ export default async function AppPosts() {
               <h4 id="postname">{item.username}</h4>
               <p id="postbody">{item.post}</p>
               <Link href={`/view/${item.username}`} id="postbutton">
-                <button>View profile</button>
+                View profile
               </Link>
             </div>
           ))}
