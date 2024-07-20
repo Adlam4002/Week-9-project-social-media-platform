@@ -4,7 +4,7 @@ email
 password
 
 NOTE TO MARKER
-If you want to make an account using Clerks test accounts you needed the email formatted like this (.....+clerk_test@example.com) and then they can all be verified using the code 424242.
+If you want to make an account using Clerks test accounts you need to create an account with the email formatted like this (.....+clerk_test@example.com) and then they can all be verified using the code 424242.
 
 Jane420
 jane+clerk_test@example.com

@@ -57,6 +57,8 @@ I also created a posts page. On this page, if the user has already created their
 
 I used a radix-ui element on my project. When I came to add one of the primitives I had already created and implemented all of my interactive elements. Due to this, I did not want to deconstruct what I had already made to add a pre-made component to the project. I settled on the separator primitive as it was useful to break up the page and wouldn’t have interfered with the elements I already had in place.
 
+I made several test accounts to use Clerk with. You can see/ access these accounts in app/lib/testaccounts.md
+
 ## Getting Started
 
 First, run the development server:
