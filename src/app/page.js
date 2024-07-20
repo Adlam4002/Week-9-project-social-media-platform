@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { SignInButton, SignUpButton, SignedOut } from "@clerk/nextjs";
+import { SignInButton, SignUpButton, SignedOut, SignedIn } from "@clerk/nextjs";
 import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 export default function Home() {
@@ -14,6 +14,14 @@ export default function Home() {
           <SignUpButton>Sign up?</SignUpButton>{" "}
           <SignInButton>Sign in</SignInButton>
         </SignedOut>
+        <SignedIn>
+          <h3>
+            Make sure you make your user profile before you try to make a post:{" "}
+            <Link id="profilelink" href={`/user/${userId}`}>
+              My profile
+            </Link>
+          </h3>
+        </SignedIn>
         <h1>Test homepage</h1>
       </div>
     </main>

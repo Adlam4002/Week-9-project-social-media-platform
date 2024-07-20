@@ -19,7 +19,7 @@ export default async function AppUserList() {
           <li>List of our users:</li>
           {userList.map((item) => (
             <li key={item.id}>
-              <Link href={`/view/${item.username}`}>
+              <Link id="userlistbut" href={`/view/${item.username}`}>
                 <button>{item.username}</button>
               </Link>
             </li>

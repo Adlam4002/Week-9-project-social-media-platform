@@ -18,31 +18,21 @@ export function ActiveLink({ href, children }) {
   const isActive = pathname === href;
 
   return (
-    <Link href={href} className={isActive ? "text-orange-400" : ""}>
+    <Link href={href} id="navbut" className={isActive ? "text-orange-400" : ""}>
       {children}
     </Link>
   );
 }
 
 export default function Header({ href, children }) {
-  // const { userId } = auth();
-  // const [userId, setUserId] = useState(null);
-  // useEffect(() => {
-  //   async function fetchUserId() {
-  //     const id = await getUserId();
-  //     setUserId(id);
-  //     console.log(id);
-  //   }
-  //   fetchUserId();
-  // }, []);
   const pathname = usePathname();
   const isActive = pathname === href;
   return (
     <>
       <nav>
-        <ActiveLink href="/">Home</ActiveLink> |{" "}
-        <ActiveLink href="/posts">Posts</ActiveLink> |{" "}
-        <ActiveLink href="/userlist">User List</ActiveLink> |{" "}
+        <ActiveLink href="/">Home</ActiveLink>
+        <ActiveLink href="/posts">Posts</ActiveLink>
+        <ActiveLink href="/userlist">User List</ActiveLink>
         <SignedIn>
           <UserButton />
         </SignedIn>
