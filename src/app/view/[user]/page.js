@@ -1,3 +1,4 @@
+import RadixButton from "@/components/RadixButton";
 import { dbConnect } from "@/utils/dbConnection";
 import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
@@ -11,9 +12,17 @@ export default async function AppUserName({ params }) {
         `,
     [username]
   );
-
+  if (result.rowCount === 0) {
+    return (
+      <main id="mdiv">
+        <h1>404 User not found</h1>
+        <h2>This user page doesn&apos;t exist yet, sorry!</h2>
+        <Link href={"/"}>Home</Link>
+      </main>
+    );
+  }
   const posts = result.rows;
-  console.log(posts[0].username);
+  // console.log(posts[0].username);
   const response = await db.query(
     `
   SELECT * FROM socialmedia_users WHERE username = $1
@@ -35,6 +44,7 @@ export default async function AppUserName({ params }) {
           </h4>
           <p>{userInfo?.bio}</p>
         </div>
+        <RadixButton />
         {posts.map((item) => (
           <div key={item.id} id="posts">
             <h4 id="postname">{item.username}</h4>

@@ -5,7 +5,21 @@ import { auth, currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import CreateForm from "@/components/CreateForm";
+import RadixButton from "@/components/RadixButton";
 
+async function handleDelete(formData) {
+  "use server";
+  const { userId } = auth();
+  const db = dbConnect();
+  const postId = formData.get("postId");
+  await db.query(
+    `
+    DELETE FROM socialmedia_posts WHERE id = $1
+    `,
+    [postId]
+  );
+  revalidatePath(`/user/${userId}`);
+}
 async function handleSubmit(formData) {
   "use server";
   const { userId } = auth();
@@ -75,41 +89,7 @@ export default async function UserIdPage() {
           Welcome {userData?.firstName}
           <br /> Signed in as: {userData?.emailAddresses[0]?.emailAddress}
         </h2>
-        {/* <div className="flex">
-          <form
-            action={handleSubmit}
-            className="flex flex-col items-center p-28"
-            id="createprofileform"
-          >
-            <input name="clerk_id" value={userData.id} hidden></input>
-            <label htmlFor="username">Enter a username:</label>
-            <input
-              name="username"
-              placeholder="Enter your username"
-              required
-            ></input>
-            <div className="flex flex-col">
-              <label htmlFor="bio">Enter your bio</label>
-
-              <textarea
-                className="resize"
-                name="bio"
-                required
-                placeholder="Write your bio here!"
-              ></textarea>
-            </div>
-            <label htmlFor="location">Your location?</label>
-            <input
-              name="location"
-              required
-              placeholder="Where are you from?"
-            ></input>
-            <label htmlFor="age">How old are you?</label>
-            <input name="age" required placeholder="20?"></input>
-            <button>Create profile</button>
-          </form>
-          <div id="current-info" className="flex flex-col"></div>
-        </div> */}
+        <RadixButton />
         <form id="postform" action={handlePost}>
           <div className="flex flex-col">
             <input
@@ -133,11 +113,16 @@ export default async function UserIdPage() {
           </div>
           <button>Post!</button>
         </form>
+        <RadixButton />
         <div>
           {posts.map((item) => (
             <div key={item.id} id="posts">
               <h4 id="postname">{item.username}</h4>
               <p id="postbody">{item.post}</p>
+              <form action={handleDelete}>
+                <input hidden name="postId" defaultValue={item.id}></input>
+                <button>Delete post?</button>
+              </form>
             </div>
           ))}
         </div>

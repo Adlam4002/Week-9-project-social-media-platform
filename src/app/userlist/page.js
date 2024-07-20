@@ -1,4 +1,5 @@
 import { dbConnect } from "@/utils/dbConnection";
+import RadixButton from "@/components/RadixButton";
 import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 export default async function AppUserList() {
@@ -17,10 +18,11 @@ export default async function AppUserList() {
       <div id="mdiv">
         <ul>
           <li>List of our users:</li>
+          <RadixButton />
           {userList.map((item) => (
             <li key={item.id}>
               <Link id="userlistbut" href={`/view/${item.username}`}>
-                <button>{item.username}</button>
+                {item.username}
               </Link>
             </li>
           ))}

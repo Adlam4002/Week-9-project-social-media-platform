@@ -2,6 +2,7 @@ import { dbConnect } from "@/utils/dbConnection";
 import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
+import RadixButton from "@/components/RadixButton";
 
 async function handlePost(formData) {
   "use server";
@@ -39,6 +40,7 @@ export default async function AppPosts() {
         <Link id="profilelink" href={`/user/${userId}`}>
           My profile
         </Link>
+
         <form id="postform" action={handlePost}>
           <div className="flex flex-col">
             <input name="user" defaultValue={userId} hidden></input>
@@ -57,14 +59,14 @@ export default async function AppPosts() {
           </div>
           <button>Post!</button>
         </form>
-
+        <RadixButton />
         <div id="mdiv">
           {posts.map((item) => (
             <div key={item.id} id="posts">
               <h4 id="postname">{item.username}</h4>
               <p id="postbody">{item.post}</p>
               <Link href={`/view/${item.username}`} id="postbutton">
-                <button>View profile</button>
+                View profile
               </Link>
             </div>
           ))}
