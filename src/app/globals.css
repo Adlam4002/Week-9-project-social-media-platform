@@ -90,6 +90,11 @@ nav,
 }
 #postname {
   padding-left: 15px;
+  font-size: 1.5rem;
+}
+
+#postbody {
+  background-color: #1d1d1d56;
 }
 #postbody,
 #postbutton {

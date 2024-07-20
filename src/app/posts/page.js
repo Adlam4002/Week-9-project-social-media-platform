@@ -33,41 +33,63 @@ export default async function AppPosts() {
   );
   const userData = response.rows;
   console.log(userData);
-  return (
-    <main>
-      <Link id="profilelink" href={`/user/${userId}`}>
-        My profile
-      </Link>
-      <form id="postform" action={handlePost}>
-        <div className="flex flex-col">
-          <input name="user" defaultValue={userId} hidden></input>
-          <input
-            name="username"
-            defaultValue={userData[0].username}
-            hidden
-          ></input>
-          <label htmlFor="post">Enter your post</label>
-          <textarea
-            className="resize"
-            name="post"
-            required
-            placeholder="Write your post here!"
-          ></textarea>
-        </div>
-        <button>Post!</button>
-      </form>
-
-      <div id="mdiv">
-        {posts.map((item) => (
-          <div key={item.id} id="posts">
-            <h4 id="postname">{item.username}</h4>
-            <p id="postbody">{item.post}</p>
-            <Link href={`/view/${item.username}`} id="postbutton">
-              <button>View profile</button>
-            </Link>
+  if (userData[0]) {
+    return (
+      <main>
+        <Link id="profilelink" href={`/user/${userId}`}>
+          My profile
+        </Link>
+        <form id="postform" action={handlePost}>
+          <div className="flex flex-col">
+            <input name="user" defaultValue={userId} hidden></input>
+            <input
+              name="username"
+              defaultValue={userData[0].username}
+              hidden
+            ></input>
+            <label htmlFor="post">Enter your post</label>
+            <textarea
+              className="resize"
+              name="post"
+              required
+              placeholder="Write your post here!"
+            ></textarea>
           </div>
-        ))}
-      </div>
-    </main>
-  );
+          <button>Post!</button>
+        </form>
+
+        <div id="mdiv">
+          {posts.map((item) => (
+            <div key={item.id} id="posts">
+              <h4 id="postname">{item.username}</h4>
+              <p id="postbody">{item.post}</p>
+              <Link href={`/view/${item.username}`} id="postbutton">
+                <button>View profile</button>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </main>
+    );
+  } else {
+    return (
+      <main>
+        <Link id="profilelink" href={`/user/${userId}`}>
+          My profile
+        </Link>
+
+        <div id="mdiv">
+          {posts.map((item) => (
+            <div key={item.id} id="posts">
+              <h4 id="postname">{item.username}</h4>
+              <p id="postbody">{item.post}</p>
+              <Link href={`/view/${item.username}`} id="postbutton">
+                <button>View profile</button>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </main>
+    );
+  }
 }

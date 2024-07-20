@@ -51,7 +51,7 @@ export default async function UserIdPage() {
     [userId]
   );
   const userEntries = testQuery.rows[0];
-  console.log(`userEntries = ${testQuery.rows[0].username}`);
+  console.log(`userEntries = ${userData}`);
   if (userEntries) {
     await db.query(
       `
@@ -153,12 +153,12 @@ export default async function UserIdPage() {
             id="createprofileform"
           >
             <input name="clerk_id" value={userData.id} hidden></input>
-            <label htmlFor="username">Enter a username:</label>
+            <label htmlFor="username">Username: {userData.username}</label>
             <input
               name="username"
               placeholder="Enter your username"
-              defaultValue={userEntries.username}
-              required
+              defaultValue={userData.username}
+              hidden
             ></input>
             <div className="flex flex-col">
               <label htmlFor="bio">Enter your bio</label>
